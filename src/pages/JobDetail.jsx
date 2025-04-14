@@ -14,7 +14,7 @@ function JobDetail() {
       <div className="container-xxl bg-white p-0">
         {/* Navbar Start */}
         <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-          <a href="index.html" className="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+          <a href="#" className="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
             <img src="assets/img/logo (1).png" alt="Umsebedzi4all Logo" height="80" />
           </a>
 
@@ -99,7 +99,7 @@ function JobDetail() {
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                Apply
+                Finish Application on Adzuna
               </a>
               
               )}

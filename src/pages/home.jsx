@@ -54,12 +54,12 @@ function Home() {
     // for catagory
     
   return (
-    <div>
-       <div className="container-xxl bg-white p-0">
+    
+       <div className="container-xxl bg-white  overflow-hidden p-0">
        
         {/* Navbar Start */}
         <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-            <a href="index.html" className="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+            <a href="#" className="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
                 <img src="assets/img/logo (1).png" alt="Umsebedzi4all Logo"   height="80"/>
             </a>
             
@@ -81,8 +81,7 @@ function Home() {
                         <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Explore</a>
                         <div className="dropdown-menu rounded-0 m-0">
                             <a href="#category" className="dropdown-item">Job Category</a>
-                            <a href="#testimonial" className="dropdown-item">Testimonial</a>
-                            
+                        
                         </div>
                     </div>
  
@@ -129,7 +128,7 @@ function Home() {
               <div className="">
                 <input
                   type="text"
-                  className="form-control border-0"
+                  className="form-control border-0 rounded-3 "
                   placeholder="Search by job title, skill or company"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}  // Update the query state on input change
@@ -139,7 +138,7 @@ function Home() {
           </div>
           <div className="col-md-2">
             <button
-              className="btn btn-dark border-0 w-100"
+              className="btn btn-dark border-0 w-100 rounded-3 "
               onClick={handleSearch}  // Trigger the search when the button is clicked
             >
               Look Up
@@ -162,6 +161,7 @@ function Home() {
                   <div className="card-body">
                     <h5 className="card-title">{job.title}</h5>
                     <p className="card-text">{job.location?.display_name}</p>
+                    
                     <Link
                           to="/jobDetail"
                           state={{ job }}    
@@ -170,6 +170,15 @@ function Home() {
                           View job info
                     </Link>
                   </div>
+                   <small className="text-truncate m-2">
+                      <i className="far fa-calendar-alt text-primary me-2"></i>
+                      Published On:{' '}
+                      {new Date(job.created).toLocaleString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </small>
                 </div>
               </div>
             ))}
@@ -196,7 +205,7 @@ function Home() {
 
                     <div className="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                          
-                        <div className="col-6 text-start">
+                        <div className="col-6 text-start d-none d-md-block">
                             <img className="img-fluid w-150" src="assets/img/undraw_team-page_q5am.png"/>
                         </div>
                          
@@ -212,208 +221,87 @@ function Home() {
 
 
        {/* Category Start */}
-       <div id="category" className="container-xxl py-5">
-        <div className="container">
-            <h1 className="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Explore By Category</h1>
+        
     
-            {/* Visible First Row */}
-            <div className="row g-4">
-                <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-mail-bulk text-primary mb-4"></i>
-                        <h6 className="mb-3">Marketing</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-                <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-headset text-primary mb-4"></i>
-                        <h6 className="mb-3">Customer Service</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-                <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-user-tie text-primary mb-4"></i>
-                        <h6 className="mb-3">Human Resource</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-                <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-tasks text-primary mb-4"></i>
-                        <h6 className="mb-3">Project Management</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-            </div>
-    
-            {/* Hidden Categories */}
-            <div id="more-categories" className="row g-4 d-none mt-2">
-                <div className="col-lg-3 col-sm-6">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-chart-line text-primary mb-4"></i>
-                        <h6 className="mb-3">Business Development</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-                <div className="col-lg-3 col-sm-6">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-hands-helping text-primary mb-4"></i>
-                        <h6 className="mb-3">Sales & Communication</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-                <div className="col-lg-3 col-sm-6">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-book-reader text-primary mb-4"></i>
-                        <h6 className="mb-3">Teaching & Education</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-                <div className="col-lg-3 col-sm-6">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-drafting-compass text-primary mb-4"></i>
-                        <h6 className="mb-3">Design & Creative</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-                <div className="col-lg-3 col-sm-6">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-cogs text-primary mb-4"></i>
-                        <h6 className="mb-3">Engineering</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-                <div className="col-lg-3 col-sm-6">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-briefcase text-primary mb-4"></i>
-                        <h6 className="mb-3">Finance & Accounting</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-                <div className="col-lg-3 col-sm-6">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-users text-primary mb-4"></i>
-                        <h6 className="mb-3">Healthcare & Nursing</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-                <div className="col-lg-3 col-sm-6">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-truck text-primary mb-4"></i>
-                        <h6 className="mb-3">Logistics & Transport</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-                <div className="col-lg-3 col-sm-6">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-umbrella text-primary mb-4"></i>
-                        <h6 className="mb-3">Hospitality & Tourism</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-                <div className="col-lg-3 col-sm-6">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-broom text-primary mb-4"></i>
-                        <h6 className="mb-3">Cleaning & Domestic</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-                <div className="col-lg-3 col-sm-6">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-paint-brush text-primary mb-4"></i>
-                        <h6 className="mb-3">Media, Marketing & Creative</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-                <div className="col-lg-3 col-sm-6">
-                    <a className="cat-item rounded p-4" href="">
-                        <i className="fa fa-3x fa-university text-primary mb-4"></i>
-                        <h6 className="mb-3">Government & Public Sector</h6>
-                        <p className="mb-0">123 Vacancy</p>
-                    </a>
-                </div>
-            </div>
-    
-            {/* Show All Button */}
-            <div className="text-center mt-4">
-            <button
-                   id="show-btn"
-                   className="btn btn-primary rounded-3"
-                   style={{ marginTop: '10px' }} // example inline style
-                    
-            >
-             Show All Categories
-        </button>
-                
-            </div>
-        </div>
-    </div>
-    
-{/* Category End */}
+      {/* Category End */}
  
         {/* Jobs Start */}
-        <div id="job_list" className="container-xxl py-5">
-      <div className="container">
-        <h1 className="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job Listing</h1>
-        <div className="tab-className text-center wow fadeInUp" data-wow-delay="0.3s">
-           
-          <div className="tab-content">
-            <div id="tab-1"  className="tab-pane fade show p-0 active">
-              {jobs.length === 0 ? (
-                <p>Loading jobs...</p>
-              ) : (
-                jobs.map((job, index) => (
-                  <div key={index} style={{background:'#DBDBDB'}}  className="job-item rounded-3 p-4 mb-4">
-                    <div  className="row g-4">
-                      <div  className="col-sm-12 col-md-8 d-flex align-items-center">
-                        <img
-                          className="flex-shrink-0 img-fluid   rounded-circle"
-                          src="assets/img/jobIcon.svg" // Replace with dynamic logo
-                          alt={job.company.display_name}
-                          style={{ width: '80px', height: '80px' }}
-                        />
-                        <div className="text-start ps-4">
-                          <h5 className="mb-3">{job.title}</h5>
-                          <span className="text-truncate me-3">
-                            <i className="fa fa-map-marker-alt text-primary me-2"></i>{job.location.display_name}
-                          </span>
-                          <span className="text-truncate me-3">
-                            <i className="far fa-clock text-primary me-2"></i>{job.contract_type}
-                          </span>
-                          <span className="text-truncate me-0">
+<div id="job_list" className="container-xxl d-flex  py-5">
+  <div className="container">
+    <h1 className="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
+      Job Listing
+    </h1>
+    <div className="tab-className text-center wow fadeInUp" data-wow-delay="0.3s">
+      <div className="tab-content">
+        <div id="tab-1" className="tab-pane fade show p-0 active">
+          {jobs.length === 0 ? (
+            <p>Loading jobs...</p>
+          ) : (
+            jobs.map((job, index) => (
+              <div key={index} style={{ background: '#DBDBDB' }} className="job-item rounded-3 p-4 mb-4">
+                <div className="row g-4">
+                  {/* Left Side: Image + Info */}
+                  <div className="col-sm-12 col-md-8 d-flex align-items-center">
+                    <img
+                      className="flex-shrink-0 d-none d-md-block img-fluid rounded-circle"
+                      src="assets/img/jobIcon.svg"
+                      alt={job.company.display_name}
+                      style={{ width: '80px', height: '80px' }}
+                    />
+                    <div className="text-start ps-4 w-100">
+                      <h5 className="mb-3">{job.title}</h5>
+                      <div className="d-flex flex-wrap gap-3">
+                        <div className="d-flex align-items-center  " style={{ maxWidth: '100%' }}>
+                          <i className="fa fa-map-marker-alt text-primary me-2"></i>
+                          <span>{job.location.display_name}</span>
+                        </div>
+                        <div className="d-flex align-items-center text-truncate" style={{ maxWidth: '100%' }}>
+                          <i className="far fa-clock text-primary me-2"></i>
+                          <span>{job.contract_type}</span>
+                        </div>
+                        <div className="d-flex align-items-center text-truncate" style={{ maxWidth: '100%' }}>
                           <i className="far fa-money-bill-alt text-primary me-2"></i>
-                          {job.salary_min && job.salary_max ? `${job.salary_min} - ${job.salary_max}` : 'Not disclosed'}
+                          <span>
+                            {job.salary_min && job.salary_max
+                              ? `${job.salary_min} - ${job.salary_max}`
+                              : 'Not disclosed'}
                           </span>
                         </div>
-                      </div>
-                      <div className="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                        <div className="d-flex mb-3">
-                        <Link
-                          to="/jobDetail"
-                          state={{ job }}    
-                          className="btn btn-primary rounded-3"
-                        >
-                          View job info
-                        </Link>
-
-                        </div>
-                        <small className="text-truncate">
-                        <i className="far fa-calendar-alt text-primary me-2"></i>Published On: {new Date(job.created).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                        </small>
                       </div>
                     </div>
                   </div>
-                ))
-              )}
-            </div>
-          </div>
+
+                  {/* Right Side: Buttons + Date */}
+                  <div className="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
+                    <div className="d-flex mb-3">
+                      <Link
+                        to="/jobDetail"
+                        state={{ job }}
+                        className="btn btn-primary rounded-3"
+                      >
+                        View job info
+                      </Link>
+                    </div>
+                    <small className="text-truncate">
+                      <i className="far fa-calendar-alt text-primary me-2"></i>
+                      Published On:{' '}
+                      {new Date(job.created).toLocaleString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </small>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
         </div>
-         
       </div>
     </div>
-        {/* Jobs End */}
+  </div>
+</div>
+{/* Jobs End */}
 
 
  
@@ -421,7 +309,7 @@ function Home() {
  
 
 
-        {/* Testimonial Start */}
+        {/* Testimonial Start  
         <div id="testimonial" className="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
     <div className="container">
         <h1 className="text-center mb-5">What People Are Saying</h1>
@@ -452,8 +340,20 @@ function Home() {
     </div>
 </div>
 
-        {/* Testimonial End */}
-        
+          Testimonial End */}
+<div style={{backgroundColor: 'rgba(60, 69, 90, 0.466)'}} className="testimonial-item m-5 m-3 rounded-3 p-4">
+    <i className="fa fa-quote-left fa-2x text-white mb-3"></i>
+    <p className="text-white">We value your feedback! Share your experience with us and help others make an informed decision.</p>
+    <div className="d-flex align-items-center">
+        <img className="img-fluid flex-shrink-0 rounded-circle" src="assets/img/pic-profile.svg" style={{width: '70px', height: '70px'}}/>
+        <div className="ps-3">
+            <h5 className="mb-1 text-dark">Your Name</h5>
+            <small className="text-white">Your Profession</small>
+        </div>
+    </div>
+</div>
+
+
 
         {/* Footer Start */}
         <div id="footer" className="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -511,7 +411,7 @@ function Home() {
         {/* Back to Top */}
         <a href="#" className="btn btn-lg rounded-circle btn-primary btn-lg-square back-to-top"><i className="bi bi-arrow-up"></i></a>
     </div>
-    </div>
+     
   );
 }
 
