@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 
 function Home() {
@@ -17,6 +18,41 @@ function Home() {
           console.error("Error fetching jobs:", error);
         });
     }, []);
+
+
+    // for seaching job
+
+    const [query, setQuery] = useState('');
+    const [jobListings, setJobListings] = useState([]);
+    const [loading, setLoading] = useState(false);
+  
+    // Function to handle the search
+    const handleSearch = async () => {
+      if (!query.trim()) return;  // Prevent searching if the input is empty
+  
+      setLoading(true);
+  
+      try {
+        // Send search query to API (Adzuna in this case)
+        const response = await axios.get('https://api.adzuna.com/v1/api/jobs/za/search/1', {
+          params: {
+            app_id: '68100a47',  // Your app_id
+            app_key: '8100b76039d587d1e6389dec9abc509f',  // Your app_key
+            where: 'South Africa',  // Fixed location (you can make this dynamic if needed)
+            results_per_page: 30,  // You can adjust this based on how many results you want
+            what: query,  // Search query (job title, skill, company)
+          },
+        });
+  
+        setJobListings(response.data.results);  // Set the job listings in state
+      } catch (error) {
+        console.error('Error fetching jobs:', error);
+      }
+  
+      setLoading(false);
+    };
+    // for catagory
+    
   return (
     <div>
        <div className="container-xxl bg-white p-0">
@@ -44,18 +80,14 @@ function Home() {
                     <div className="nav-item dropdown">
                         <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Explore</a>
                         <div className="dropdown-menu rounded-0 m-0">
-                            <a href="#catagory " className="dropdown-item">Job Category</a>
+                            <a href="#category" className="dropdown-item">Job Category</a>
                             <a href="#testimonial" className="dropdown-item">Testimonial</a>
                             
                         </div>
                     </div>
-
-                   
-                        <Link to="/interview" className="nav-link nav-item " >Interview Help</Link>
-                         
-                    
-                    
-
+ 
+                    <Link to="/interview" className="nav-link nav-item " >Interview Help</Link>
+                     
                     <a href="#footer" className="nav-item nav-link">Contact</a>
                 </div>
                 <a href="#" className="btn btn-primary m-2 rounded-3  py-4 px-lg-5 d-none d-lg-block ">Free Resume Builder<i className="fa fa-arrow-right ms-3"></i></a>
@@ -89,22 +121,62 @@ function Home() {
 
 
         {/* Search Start */}
-        <div id="catagory"  className="container-fluid bg-primary  wow fadeIn" data-wow-delay="0.1s" style={{padding: '35px'}}>
-            <div className="container">
-                <div className="row g-2">
-                    <div className="col-md-10">
-                        <div className="row g-2">
-                            <div className=" ">
-                                <input type="text" className="form-control border-0" placeholder="Search by job title, skill or company" />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-2">
-                        <button className="btn btn-dark border-0 w-100">Look Up</button>
-                    </div>
-                </div>
+        <div id="catagory" className="container-fluid bg-primary wow fadeIn" data-wow-delay="0.1s" style={{ padding: '35px' }}>
+      <div className="container">
+        <div className="row g-2">
+          <div className="col-md-10">
+            <div className="row g-2">
+              <div className="">
+                <input
+                  type="text"
+                  className="form-control border-0"
+                  placeholder="Search by job title, skill or company"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}  // Update the query state on input change
+                />
+              </div>
             </div>
+          </div>
+          <div className="col-md-2">
+            <button
+              className="btn btn-dark border-0 w-100"
+              onClick={handleSearch}  // Trigger the search when the button is clicked
+            >
+              Look Up
+            </button>
+          </div>
         </div>
+      </div>
+
+      {/* Display the job listings */}
+      
+    </div>
+    <div className="container mt-4 m-3 p-3">
+        {loading && <p>Loading...</p>}
+        {jobListings.length > 0 && (
+          <div className="row">
+            {jobListings.map((job) => (
+              <div className=" m-2  " key={job.id}>
+                <div className="card">
+                  <img src={job.company?.logo || 'default-logo.png'} className="card-img-top" alt="Company Logo" />
+                  <div className="card-body">
+                    <h5 className="card-title">{job.title}</h5>
+                    <p className="card-text">{job.location?.display_name}</p>
+                    <Link
+                          to="/jobDetail"
+                          state={{ job }}    
+                          className="btn btn-primary rounded-3"
+                        >
+                          View job info
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+        {jobListings.length === 0 && !loading }
+      </div>
         
         {/* Search End */}
 
@@ -288,17 +360,17 @@ function Home() {
         <div className="tab-className text-center wow fadeInUp" data-wow-delay="0.3s">
            
           <div className="tab-content">
-            <div id="tab-1" className="tab-pane fade show p-0 active">
+            <div id="tab-1"  className="tab-pane fade show p-0 active">
               {jobs.length === 0 ? (
                 <p>Loading jobs...</p>
               ) : (
                 jobs.map((job, index) => (
-                  <div key={index} className="job-item p-4 mb-4">
-                    <div className="row g-4">
-                      <div className="col-sm-12 col-md-8 d-flex align-items-center">
+                  <div key={index} style={{background:'#DBDBDB'}}  className="job-item rounded-3 p-4 mb-4">
+                    <div  className="row g-4">
+                      <div  className="col-sm-12 col-md-8 d-flex align-items-center">
                         <img
-                          className="flex-shrink-0 img-fluid border rounded-circle"
-                          src="assets/img/com-logo-1.jpg" // Replace with dynamic logo
+                          className="flex-shrink-0 img-fluid   rounded-circle"
+                          src="assets/img/jobIcon.svg" // Replace with dynamic logo
                           alt={job.company.display_name}
                           style={{ width: '80px', height: '80px' }}
                         />

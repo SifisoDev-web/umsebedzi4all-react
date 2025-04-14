@@ -38,7 +38,7 @@ function JobDetail() {
             <div className="row gy-5 gx-4">
               <div className="col-lg-8 ">
                 <div className="d-flex align-items-center mb-5  ">
-                  <img className="flex-shrink-0 img-fluid border rounded" src="img/com-logo-2.jpg" alt="" style={{ width: '80px', height: '80px' }} />
+                  <img className="flex-shrink-0 img-fluid  rounded" src="assets/img/jobIcon.svg" alt="" style={{ width: '80px', height: '80px' }} />
                   <div className="text-start  ps-4">
                     <h3 className="mb-3">{job.title}</h3>
                     <span className="text-truncate me-3"><i className="fa fa-map-marker-alt text-primary me-2"></i>{job.location?.display_name}</span>
@@ -73,13 +73,12 @@ function JobDetail() {
 
 
               <div className="">
-                <div style={{ backgroundColor: '#F2EFE7' }} className="  rounded p-5 mb-4 wow slideInUp border" data-wow-delay="0.1s">
+                <div style={{background:'#DBDBDB'}} className="  rounded-3 p-5 mb-4 wow slideInUp border" data-wow-delay="0.1s">
                   <h4 className="mb-4">Job Summary</h4>
                   <p><i className="fa fa-angle-right text-primary me-2"></i>Published On:  {new Date(job.created).toLocaleString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
                   <p><i className="fa fa-angle-right text-primary me-2"></i>Contract: {job.contract_time}</p>
                   <p><i className="fa fa-angle-right text-primary me-2"></i>Category: {job.category?.label}</p>
-                </div>
-                <div style={{ backgroundColor: '#F2EFE7' }}  className="  rounded p-5 wow slideInUp border" data-wow-delay="0.1s">
+                 
                <h4 className="mb-4">Company Detail</h4>
               <p><strong>Company:</strong> {job.company?.display_name || 'N/A'}</p>
               <p><strong>Job Title:</strong> {job.title || 'N/A'}</p>

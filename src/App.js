@@ -18,6 +18,7 @@ function App() {
           <Route path="/interview" element={<Interview />} />
           <Route path="/location" element={<Location />} />
           <Route path="/error" element={<Error />} />
+          <Route path="*" element={<Error />} />
           <Route path='/jobDetail' element={<JobDetail />} />
         </Routes>
       </div>

@@ -55,7 +55,10 @@ function Interview() {
 
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <div className="navbar-nav ms-auto p-4 p-lg-0">
-            <Link to="/" className="nav-item nav-link">Home</Link>
+          <Link to="/" className="nav-item nav-link">
+                    <i className="fas fa-home"  ></i>
+                          Home
+          </Link>
              
           </div>
           <a href="#" className="btn btn-primary m-2 rounded-3 py-4 px-lg-5 d-none d-lg-block">

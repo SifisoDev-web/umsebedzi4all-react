@@ -14,9 +14,16 @@ function Location() {
         </button>
         <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto p-4 p-lg-0">
-                <Link to="/" className="nav-item nav-link">Home</Link>
+                <Link to="/" className="nav-item nav-link">
+                  <i className="fas fa-home"  ></i>
+                       Home
+                </Link>
                   
-                <Link to="/interview" className="nav-link nav-item " >Interview Help</Link>
+                <Link to="/interview" className="nav-link nav-item">
+                  <i className="fas fa-briefcase"  ></i>
+                      Interview Help
+                </Link>
+
                      
             </div>
             <a href="#" className="btn btn-primary m-2 rounded-3  py-4 px-lg-5 d-none d-lg-block ">Free Resume Builder<i className="fa fa-arrow-right ms-3"></i></a>
