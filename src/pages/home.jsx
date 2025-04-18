@@ -58,38 +58,38 @@ function Home() {
        <div className="container-xxl bg-white  overflow-hidden p-0">
        
         {/* Navbar Start */}
-        <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-            <a href="#" className="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+        <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top  ">
+            <a href="#" className="navbar-brand d-flex align-items-center text-center py-0 px-4  ">
                 <img src="assets/img/logo (1).png" alt="Umsebedzi4all Logo"   height="80"/>
             </a>
             
             <button type="button" className="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span className="navbar-toggler-icon"></span>
             </button>
-            <div className="collapse navbar-collapse" id="navbarCollapse">
-                <div className="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="#" className="nav-item nav-link">Home</a>
-                    <a href="#about" className="nav-item nav-link">About</a>
+            <div className="collapse navbar-collapse " id="navbarCollapse">
+                <div className="navbar-nav ms-auto   ">
+                    <a href="#" className="nav-item nav-link m-0 fw-bold">Home</a>
+                    <a href="#about" className="nav-item nav-link m-0 fw-bold ">About</a>
                     <div className="nav-item dropdown">
-                        <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
+                        <a href="#" className="nav-link dropdown-toggle fw-bold m-0" data-bs-toggle="dropdown">Jobs</a>
                         <div className="dropdown-menu rounded-0 m-0">
-                            <a href="#job_list" className="dropdown-item">Job List</a>
-                            <Link to="/location" className="dropdown-item">Job Location</Link>
+                            <a href="#job_list" className="dropdown-item fw-bold">Job List</a>
+                            <Link to="/location" className="dropdown-item fw-bold">Job Location</Link>
                         </div>
                     </div>
                     <div className="nav-item dropdown">
-                        <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Explore</a>
-                        <div className="dropdown-menu rounded-0 m-0">
-                            <a href="#category" className="dropdown-item">Job Category</a>
+                        <a href="#" className="nav-link dropdown-toggle m-0 fw-bold" data-bs-toggle="dropdown">Explore</a>
+                        <div className="dropdown-menu rounded-0 ">
+                            <a href="#category" className="dropdown-item  fw-bold">Job Category</a>
                         
                         </div>
                     </div>
  
-                    <Link to="/interview" className="nav-link nav-item " >Interview Help</Link>
+                    <Link to="/interview" className="nav-link nav-item m-0  fw-bold" >Interview Help</Link>
                      
-                    <a href="#footer" className="nav-item nav-link">Contact</a>
+                    <a href="#footer" className="nav-item nav-link m-0 fw-bold">Contact</a>
                 </div>
-                <a href="#" className="btn btn-primary m-2 rounded-3  py-4 px-lg-5 d-none d-lg-block ">Free Resume Builder<i className="fa fa-arrow-right ms-3"></i></a>
+                <Link to="/formResume" className="btn btn-primary m-2 rounded-3  py-4 px-lg-5 fw-bold   ">Free Resume Builder<i className="fa fa-arrow-right ms-3"></i></Link>
         
             </div>
         </nav>
@@ -105,7 +105,7 @@ function Home() {
                         <div className="container">
                             <div className="row justify-content-start">
                                 <div className="col-10 col-lg-8">
-                                    <h1 className="display-3   animated slideInDown mb-4 " style={{color: 'rgb(236, 224, 208)'}}  >The Gateway to Your Dream Job</h1>
+                                    <h1 className="display-3   animated slideInDown mb-4 fw-bold  " style={{color: 'rgb(236, 224, 208)'}}  >The Gateway to Your Dream Job</h1>
                                     <p className="fs-5 fw-medium   mb-4 pb-2 " style={{color: 'rgb(37, 30, 77)'}}>At umsebedzi4all, we believe everyone deserves a job that matches their passion. Start your journey today and find the perfect opportunity that helps you grow and succeed!</p>
                                      
                                 </div>
@@ -195,7 +195,7 @@ function Home() {
                 <div className="row g-5 align-items-center">
                     
                     <div className="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                        <h1 className="mb-4">We Connect You to the Right Jobs Across Mzansi - Find Career Opportunities in South Africa</h1>
+                        <h1 className="mb-4 fw-bold">We Connect You to the Right Jobs Across Mzansi - Find Career Opportunities in South Africa</h1>
                         <p className="mb-4">At umsebedzi4all, we make it easy to find job opportunities that match your skills and dreams. Whether you're starting out or looking for your next big move, we're here to help you grow.</p>
                         <p><i className="fa fa-check text-primary me-3"></i>Jobs in all industries, across South Africa</p>
                         <p><i className="fa fa-check text-primary me-3"></i>Free CV builder and application help</p>
@@ -356,7 +356,7 @@ function Home() {
 
 
         {/* Footer Start */}
-        <div id="footer" className="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div id="footer" className="container-fluid bg-primary text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div className="container py-5">
                 <div className="row g-5">
                     <div className="col-lg-3 col-md-6">
@@ -391,7 +391,7 @@ function Home() {
 
 							
 							 
-							Designed & Developed by <a className="border-bottom" href="#">SifisoDev-web</a>
+							Designed & Developed by <a className="border-bottom" href="https://sifiso.onrender.com">SW_web_Solutions</a>
 
                         </div>
                         <div className="col-md-6 text-center text-md-end">
@@ -409,7 +409,10 @@ function Home() {
 
 
         {/* Back to Top */}
-        <a href="#" className="btn btn-lg rounded-circle btn-primary btn-lg-square back-to-top"><i className="bi bi-arrow-up"></i></a>
+        <a href="#" className="btn btn-lg rounded-circle btn-primary btn-lg-square back-to-top d-flex justify-content-center align-items-center">
+          <i className="bi bi-arrow-up"></i>
+        </a>
+
     </div>
      
   );

@@ -7,6 +7,8 @@ import Interview from './pages/Interview';
 import Location from './pages/Location';
 import Error from './pages/Error';
 import JobDetail from './pages/JobDetail';
+import FormResume from './pages/FormResume';
+import Resume from './pages/Resume'; 
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route path="/error" element={<Error />} />
           <Route path="*" element={<Error />} />
           <Route path='/jobDetail' element={<JobDetail />} />
+          <Route path="/formResume" element={<FormResume />} />
+          <Route path="/resume" element={<Resume />} /> 
         </Routes>
       </div>
     </Router>

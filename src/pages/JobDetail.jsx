@@ -13,24 +13,23 @@ function JobDetail() {
     <>
       <div className="container-xxl bg-white p-0">
         {/* Navbar Start */}
-        <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-          <a href="#" className="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-            <img src="assets/img/logo (1).png" alt="Umsebedzi4all Logo" height="80" />
-          </a>
-
-          <button type="button" className="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarCollapse">
-            <div className="navbar-nav ms-auto p-4 p-lg-0">
-              <Link to="/" className="nav-item nav-link">Home</Link>
-            </div>
-            <a href="" className="btn btn-primary m-2 rounded-3 py-4 px-lg-5 d-none d-lg-block">
-              Free Resume Builder<i className="fa fa-arrow-right ms-3"></i>
-            </a>
-          </div>
-        </nav>
-        {/* Navbar End */}
+                    <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top  ">
+                          <a href="#" className="navbar-brand d-flex align-items-center text-center py-0 px-4  ">
+                              <img src="assets/img/logo (1).png" alt="Umsebedzi4all Logo"   height="80"/>
+                          </a>
+                          <button type="button" className="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                              <span className="navbar-toggler-icon"></span>
+                          </button>
+                          <div className="collapse navbar-collapse " id="navbarCollapse">
+                              <div className="navbar-nav ms-auto   ">
+                                  <Link to="/" className="nav-item nav-link fw-bold">
+                                  <i className="bi bi-house-door me-2"></i>Home
+                                  </Link>
+                              </div>
+                              <Link to="/formResume" className="btn btn-primary m-2 rounded-3  py-4 px-lg-5 fw-bold   ">Free Resume Builder<i className="fa fa-arrow-right ms-3"></i></Link>     
+                          </div>
+                      </nav>
+                      {/* Navbar End */}
 
         {/* Job Detail Start */}
         <div className="container-xxl py-5 wow  fadeInUp" data-wow-delay="0.1s">
