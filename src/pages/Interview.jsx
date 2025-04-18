@@ -132,10 +132,13 @@ function Interview() {
             <img src="assets/img/interview.png" alt="Interview Guide" className="img-fluid rounded float-end" />
           </div>
         </div>
-        <a href="#" className="btn btn-lg rounded-circle btn-primary btn-lg-square back-to-top"><i className="bi bi-arrow-up"></i></a>
+        <a href="#" className="btn btn-lg rounded-circle btn-primary btn-lg-square back-to-top d-flex justify-content-center align-items-center">
+          <i className="bi bi-arrow-up"></i>
+        </a>
       </div>
     </div>
   );
 }
+
 
 export default Interview;
