@@ -2,23 +2,12 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import JobList from '../components/JobList';
 
 
 function Home() {
 
-    const [jobs, setJobs] = useState([]);
-  
-    useEffect(() => {
-      fetch("https://api.adzuna.com/v1/api/jobs/za/search/1?app_id=68100a47&app_key=8100b76039d587d1e6389dec9abc509f&where=South+Africa&results_per_page=30")
-        .then(response => response.json())
-        .then(data => {
-          setJobs(data.results);
-        })
-        .catch(error => {
-          console.error("Error fetching jobs:", error);
-        });
-    }, []);
-
+   
 
     // for seaching job
 
@@ -28,19 +17,19 @@ function Home() {
   
     // Function to handle the search
     const handleSearch = async () => {
-      if (!query.trim()) return;  // Prevent searching if the input is empty
+      if (!query.trim()) return;   
   
       setLoading(true);
   
       try {
-        // Send search query to API (Adzuna in this case)
+         
         const response = await axios.get('https://api.adzuna.com/v1/api/jobs/za/search/1', {
           params: {
-            app_id: '68100a47',  // Your app_id
-            app_key: '8100b76039d587d1e6389dec9abc509f',  // Your app_key
-            where: 'South Africa',  // Fixed location (you can make this dynamic if needed)
-            results_per_page: 30,  // You can adjust this based on how many results you want
-            what: query,  // Search query (job title, skill, company)
+            app_id: '68100a47',   
+            app_key: '8100b76039d587d1e6389dec9abc509f',   
+            where: 'South Africa',   
+            results_per_page: 30,   
+            what: query,   
           },
         });
   
@@ -77,14 +66,7 @@ function Home() {
                             <Link to="/location" className="dropdown-item fw-bold">Job Location</Link>
                         </div>
                     </div>
-                    <div className="nav-item dropdown">
-                        <a href="#" className="nav-link dropdown-toggle m-0 fw-bold" data-bs-toggle="dropdown">Explore</a>
-                        <div className="dropdown-menu rounded-0 ">
-                            <a href="#category" className="dropdown-item  fw-bold">Job Category</a>
-                        
-                        </div>
-                    </div>
- 
+                     
                     <Link to="/interview" className="nav-link nav-item m-0  fw-bold" >Interview Help</Link>
                      
                     <a href="#footer" className="nav-item nav-link m-0 fw-bold">Contact</a>
@@ -131,7 +113,7 @@ function Home() {
                   className="form-control border-0 rounded-3 "
                   placeholder="Search by job title, skill or company"
                   value={query}
-                  onChange={(e) => setQuery(e.target.value)}  // Update the query state on input change
+                  onChange={(e) => setQuery(e.target.value)}   
                 />
               </div>
             </div>
@@ -139,7 +121,7 @@ function Home() {
           <div className="col-md-2">
             <button
               className="btn btn-dark border-0 w-100 rounded-3 "
-              onClick={handleSearch}  // Trigger the search when the button is clicked
+              onClick={handleSearch}   
             >
               Look Up
             </button>
@@ -216,131 +198,10 @@ function Home() {
             </div>
         </div>
         {/* About End */}
-
-
-
-
-       {/* Category Start */}
-        
-    
-      {/* Category End */}
  
-        {/* Jobs Start */}
-<div id="job_list" className="container-xxl d-flex  py-5">
-  <div className="container">
-    <h1 className="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">
-      Job Listing
-    </h1>
-    <div className="tab-className text-center wow fadeInUp" data-wow-delay="0.3s">
-      <div className="tab-content">
-        <div id="tab-1" className="tab-pane fade show p-0 active">
-          {jobs.length === 0 ? (
-            <p>Loading jobs...</p>
-          ) : (
-            jobs.map((job, index) => (
-              <div key={index} style={{ background: '#DBDBDB' }} className="job-item rounded-3 p-4 mb-4">
-                <div className="row g-4">
-                  {/* Left Side: Image + Info */}
-                  <div className="col-sm-12 col-md-8 d-flex align-items-center">
-                    <img
-                      className="flex-shrink-0 d-none d-md-block img-fluid rounded-circle"
-                      src="assets/img/jobIcon.svg"
-                      alt={job.company.display_name}
-                      style={{ width: '80px', height: '80px' }}
-                    />
-                    <div className="text-start ps-4 w-100">
-                      <h5 className="mb-3">{job.title}</h5>
-                      <div className="d-flex flex-wrap gap-3">
-                        <div className="d-flex align-items-center  " style={{ maxWidth: '100%' }}>
-                          <i className="fa fa-map-marker-alt text-primary me-2"></i>
-                          <span>{job.location.display_name}</span>
-                        </div>
-                        <div className="d-flex align-items-center text-truncate" style={{ maxWidth: '100%' }}>
-                          <i className="far fa-clock text-primary me-2"></i>
-                          <span>{job.contract_type}</span>
-                        </div>
-                        <div className="d-flex align-items-center text-truncate" style={{ maxWidth: '100%' }}>
-                          <i className="far fa-money-bill-alt text-primary me-2"></i>
-                          <span>
-                            {job.salary_min && job.salary_max
-                              ? `${job.salary_min} - ${job.salary_max}`
-                              : 'Not disclosed'}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Right Side: Buttons + Date */}
-                  <div className="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                    <div className="d-flex mb-3">
-                      <Link
-                        to="/jobDetail"
-                        state={{ job }}
-                        className="btn btn-primary rounded-3"
-                      >
-                        View job info
-                      </Link>
-                    </div>
-                    <small className="text-truncate">
-                      <i className="far fa-calendar-alt text-primary me-2"></i>
-                      Published On:{' '}
-                      {new Date(job.created).toLocaleString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </small>
-                  </div>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-{/* Jobs End */}
-
-
  
-
- 
-
-
-        {/* Testimonial Start  
-        <div id="testimonial" className="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-    <div className="container">
-        <h1 className="text-center mb-5">What People Are Saying</h1>
-        <div className="owl-carousel testimonial-carousel">
-            <div style={{backgroundColor: 'rgba(60, 69, 90, 0.466)'}}  className="testimonial-item m-5 m-3 rounded p-4">
-                <i className="fa fa-quote-left fa-2x text-white mb-3"></i>
-                <p className="text-white">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                <div className="d-flex align-items-center">
-                    <img className="img-fluid flex-shrink-0 rounded-circle" src="assets/img/testimonial-1.jpg" style={{width: '70px', height: '70px'}}/>
-                    <div className="ps-3">
-                        <h5 className="mb-1 text-dark">Client Name</h5>
-                        <small className="text-white">Profession</small>
-                    </div>
-                </div>
-            </div>
-            <div style={{backgroundColor: 'rgba(60, 69, 90, 0.466)'}}  className="testimonial-item m-5 m-3 rounded p-4">
-                <i className="fa fa-quote-left fa-2x text-white mb-3"></i>
-                <p className="text-white">Dolor et eos labore, stet justo sed est sed. Diam sed sed dolor stet amet eirmod eos labore diam</p>
-                <div className="d-flex align-items-center">
-                    <img className="img-fluid flex-shrink-0 rounded-circle" src="assets/img/testimonial-1.jpg" style={{width: '70px', height: '70px'}}/>
-                    <div className="ps-3">
-                        <h5 className="mb-1 text-dark">Client Name</h5>
-                        <small className="text-white">Profession</small>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-          Testimonial End */}
+        <JobList />
+          
 <div style={{backgroundColor: 'rgba(60, 69, 90, 0.466)'}} className="testimonial-item m-5 m-3 rounded-3 p-4">
     <i className="fa fa-quote-left fa-2x text-white mb-3"></i>
     <p className="text-white">We value your feedback! Share your experience with us and help others make an informed decision.</p>
@@ -353,61 +214,7 @@ function Home() {
     </div>
 </div>
 
-
-
-        {/* Footer Start */}
-        <div id="footer" className="container-fluid bg-primary text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-            <div className="container py-5">
-                <div className="row g-5">
-                    <div className="col-lg-3 col-md-6">
-                        <h5 className="text-white mb-4">Usembedzi4all</h5>
-                        <a className="btn btn-link text-white-50" href="">About Us</a>
-                        <a className="btn btn-link text-white-50" href="">Contact Us</a>
-                        <a className="btn btn-link text-white-50" href="">Our Services</a>
-                        <a className="btn btn-link text-white-50" href="">Privacy Policy</a>
-                        <a className="btn btn-link text-white-50" href="">Terms & Condition</a>
-                    </div>
-                    
-                    <div className="col-lg-3 col-md-6">
-                        <h5 className="text-white mb-4">Contact</h5>
-                        <p className="mb-2"><i className="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                        <p className="mb-2"><i className="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                        <p className="mb-2"><i className="fa fa-envelope me-3"></i>info@example.com</p>
-                        <div className="d-flex pt-2">
-                            <a className="btn btn-outline-light rounded-circle btn-social" href=""><i className="fab fa-twitter"></i></a>
-                            <a className="btn btn-outline-light rounded-circle btn-social" href=""><i className="fab fa-facebook-f"></i></a>
-                            <a className="btn btn-outline-light rounded-circle btn-social" href=""><i className="fab fa-youtube"></i></a>
-                            <a className="btn btn-outline-light rounded-circle btn-social" href=""><i className="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                     
-                </div>
-            </div>
-            <div className="container">
-                <div className="copyright">
-                    <div className="row">
-                        <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a className="border-bottom" href="#">Usembedzi4all</a>, All Rights Reserved.
-
-							
-							 
-							Designed & Developed by <a className="border-bottom" href="https://sifiso.onrender.com">SW_web_Solutions</a>
-
-                        </div>
-                        <div className="col-md-6 text-center text-md-end">
-                            <div className="footer-menu">
-                              
-                                <a href="">Help</a>
-                                <a href="">FQAs</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {/* Footer End */}
-
-
+ 
         {/* Back to Top */}
         <a href="#" className="btn btn-lg rounded-circle btn-primary btn-lg-square back-to-top d-flex justify-content-center align-items-center">
           <i className="bi bi-arrow-up"></i>

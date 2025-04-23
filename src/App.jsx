@@ -10,6 +10,8 @@ import JobDetail from './pages/JobDetail';
 import FormResume from './pages/FormResume';
 import Resume from './pages/Resume'; 
 
+import Footer from './components/Footer';
+
 function App() {
   return (
     <Router>
@@ -25,6 +27,7 @@ function App() {
           <Route path="/formResume" element={<FormResume />} />
           <Route path="/resume" element={<Resume />} /> 
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

@@ -8,7 +8,7 @@ import {Link } from 'react-router-dom';
 
 function Resume() {
   const opt = {
-    margin: 0.5, // Adjust the margin if needed
+    margin: 0.5,  
     filename: 'cv.pdf',
     image: { type: 'jpeg', quality: 0.98 },
     html2canvas: { scale: 2 },
@@ -33,7 +33,7 @@ function Resume() {
     html2pdf().from(element).save('umsebedzi4all-resume.pdf');
   };
 
-  const [themeColor, setThemeColor] = useState('#2e86de'); // default red
+  const [themeColor, setThemeColor] = useState('#2e86de');  
 
   const handleColorChange = (e) => {
     const selectedColor = e.target.value;

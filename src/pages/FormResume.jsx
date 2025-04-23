@@ -112,7 +112,7 @@ function FormResume() {
 
         {/* Step 1: Personal Info */}
         <form onSubmit={handleSubmit}>
-        <div className="step-section active" id="step1">
+        <div className="step-section active m-5" id="step1">
           <h4 style={{ display: 'inline-block', backgroundColor: 'rgba(13, 110, 253, 0.1)', padding: '8px 12px', borderRadius: '6px' 
            }}>Personal Information</h4>
           <div className="mb-3">
@@ -149,8 +149,8 @@ function FormResume() {
           <div className="invalid-feedback">Please enter a personal profile.</div>
           </div>
 
-          <button type="button" className="btn btn-primary float-end m-3" onClick={() => window.nextStep(1)}>
-            Continue <i className="bi bi-arrow-right"></i>
+          <button type="button" className="btn btn-primary float-end" onClick={() => window.nextStep(1)}>
+              Continue <i className="bi bi-arrow-right"></i>
           </button>
         </div>
 
