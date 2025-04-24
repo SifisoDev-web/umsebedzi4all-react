@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Job Search and Resume Builder 📝
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Job Search and Resume Builder** is a web application built using **React.js** and the **Adzuna Job API**. It allows users to search for job listings, view details, and build their resumes based on the job information.
 
-## Available Scripts
+## 🌐 Live Demo
 
-In the project directory, you can run:
+You can explore the live project here: [Job Search & Resume Builder Demo](https://umsebedzi4all-react.onrender.com/)
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🔍 Job search functionality using the **Adzuna Job API**
+- 📑 Resume builder tool for creating custom resumes based on job search data
+- 💻 Responsive and user-friendly interface
+- 📝 Save and download your resume
+- 🔄 Real-time job listing updates with search filters
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🧰 Tech Stack
 
-### `npm test`
+- **React.js** – Frontend framework
+- **Adzuna Job API** – Fetch job data from the Adzuna API
+- **CSS3** – Styling and layout
+- **Bootstrap** – For responsive grid and components
+ 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔧 Installation
 
-### `npm run build`
+To run the project locally:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    ```bash
+    git clone https://github.com/SifisoDev-web/umsebedzi4all-react.git
+    cd job-search-resume-builder
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Install dependencies:
 
-### `npm run eject`
+    ```bash
+    npm install
+    npm install react-router-dom
+    
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Start the React development server:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    ```bash
+    npm start
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+    The application will be running on `http://localhost:3000`.
 
-## Learn More
+## 📁 Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## ❗ Challenges Faced
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- 📈 Handling real-time updates and API integration with **Adzuna**.
+- 🔄 Designing a responsive layout for the job search and resume builder interface.
+- 📝 Ensuring user data is retained when building and saving resumes.
+- 🔒 Managing CORS and security when making requests to external APIs.
 
-### Code Splitting
+## 🏗️ Future Enhancements
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- 🗂️ Integrate additional job APIs to provide more job listing sources.
+- ✍️ Allow users to upload their own resume templates.
+- 🧑‍🤝‍🧑 Add user authentication to allow users to save their resumes securely.
+- 📱 Improve mobile responsiveness for smaller devices.
+-Allow users to apply job and track it 
 
-### Analyzing the Bundle Size
+ 
+ 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Website:** [https://sifisowiseman.onrender.com/](https://sifisowiseman.onrender.com/)  
+**GitHub:** [https://github.com/SifisoDev-web](https://github.com/SifisoDev-web)
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Made with ❤️ by Sifiso Wiseman Nkosi**
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
